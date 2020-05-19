@@ -3,6 +3,8 @@
 namespace App\services;
 
 
+use GuzzleHttp\Client;
+
 class abstractHoliday
 {
     protected $holidays;
@@ -14,17 +16,10 @@ class abstractHoliday
 
     protected function fetchHolidays()
     {
-        $cURLConnection = curl_init();
+        $http = new Client();
+        $response = $http->get(config('services.holiday.end_point'));
 
-        curl_setopt($cURLConnection, CURLOPT_URL, 'https://kayaposoft.com/enrico/json/v2.0/?action=getHolidaysForYear&year=2020&country=zaf&holidayType=public_holiday');
-        curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true);
-
-        $holidayResponse = curl_exec($cURLConnection);
-        curl_close($cURLConnection);
-
-        $jsonArrayResponse = json_decode($holidayResponse);
-
-        return $jsonArrayResponse;
+        return json_decode($response->getBody()->getContents());
     }
     public function getHolidays()
     {
