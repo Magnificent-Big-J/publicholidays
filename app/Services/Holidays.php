@@ -1,7 +1,7 @@
 <?php
-namespace App\services;
+namespace App\Services;
 
-class Holidays extends abstractHoliday implements interfaceHoliday
+class Holidays extends AbstractHoliday implements InterfaceHoliday
 {
     public function __construct()
     {

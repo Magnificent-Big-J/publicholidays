@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/', 'HolidaysController@index')->name('holidays.index');
+Route::get('holidays/download','HolidaysController@download')->name('holidays.download');

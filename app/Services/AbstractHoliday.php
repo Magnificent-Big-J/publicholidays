@@ -1,11 +1,11 @@
 <?php
 
-namespace App\services;
+namespace App\Services;
 
 
 use GuzzleHttp\Client;
 
-class abstractHoliday
+class AbstractHoliday
 {
     protected $holidays;
 
@@ -17,7 +17,7 @@ class abstractHoliday
     protected function fetchHolidays()
     {
         $http = new Client();
-        $response = $http->get(config('services.holiday.end_point'));
+        $response = $http->get(config('services.holiday.end_point'),['verify' => false]);
 
         return json_decode($response->getBody()->getContents());
     }

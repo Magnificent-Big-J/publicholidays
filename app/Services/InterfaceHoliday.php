@@ -1,7 +1,7 @@
 <?php
-namespace App\services;
+namespace App\Services;
 
-interface interfaceHoliday {
+interface InterfaceHoliday {
     public function extractDate($response) : string;
     public function extractHoliday($response) : string;
 }
